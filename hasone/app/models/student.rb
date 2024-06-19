@@ -10,6 +10,7 @@ class Student < ApplicationRecord
 	#validates :email, format: URI::MailTo::EMAIL_REGEXP
 
 		 validates :email,
+		 format: URI::MailTo::EMAIL_REGEXP,
            uniqueness: {
             message: ->(object, data) do
             "Hey #{object.name}, #{data[:value]} is already taken."
@@ -18,8 +19,8 @@ class Student < ApplicationRecord
 
 
 
-	#validates :phone , length: {minimum:10 ,maximum:10}
-	validates_format_of :phone, :with =>  /\d[0-9]\)*\z/ , :message => "Only positive number without spaces are allowed"
+	validates :phone ,  length:{ is: 10}, numericality: { only_integer: true }
+	#validates_format_of :phone, :with =>  /\d[0-9]\)*\z/ , length:{ is: 10},:message => "Only positive number without spaces are allowed"
 
 	validates :address, length: { maximum: 50,
     too_long: "%{count} characters is the maximum allowed" }
