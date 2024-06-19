@@ -2,7 +2,8 @@ class Student < ApplicationRecord
 	#validates :name, presence: true
 	#validates :name, presence: { message: "must be given please" }
 	#validates :name, allow_blank:false
-	 validates :name, length: { minimum: 10 }
+	 #validates :name, length: { minimum: 10 }
+	 validates :name, format: { with: /\A\w{6,10}\z/ }
 
 
 	#validates :email, confirmation: { case_sensitive: false }
@@ -18,8 +19,9 @@ class Student < ApplicationRecord
     }
 
 
-
-	validates :phone ,  length:{ is: 10}, numericality: { only_integer: true }
+    PHONE_REGEX = /\A\(\d{3}\)\d{3}-\d{4}\z/
+    validates :phone, format: { with: PHONE_REGEX }
+	#validates :phone ,  length:{ is: 10}, numericality: { only_integer: true }
 	#validates_format_of :phone, :with =>  /\d[0-9]\)*\z/ , length:{ is: 10},:message => "Only positive number without spaces are allowed"
 
 	validates :address, length: { maximum: 50,
