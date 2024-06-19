@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_19_082658) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_19_115428) do
   create_table "account_histories", force: :cascade do |t|
     t.integer "credit_rating"
     t.integer "account_id", null: false
@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_19_082658) do
     t.text "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "gender"
   end
 
   create_table "suppliers", force: :cascade do |t|

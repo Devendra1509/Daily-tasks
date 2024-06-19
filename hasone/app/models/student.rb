@@ -24,4 +24,10 @@ class Student < ApplicationRecord
 
 	validates :address, length: { maximum: 50,
     too_long: "%{count} characters is the maximum allowed" }
+
+
+    validates :gender ,inclusion: {in: %w(male female), message:"%{value} is not valid "}
+
+    validates :gender ,exclusion: { in: %w(male female), message:"%{value} is not valid "}# not allow this two 
+ 
 end
